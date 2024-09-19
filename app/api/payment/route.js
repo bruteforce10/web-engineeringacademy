@@ -2,8 +2,8 @@ import Midtrans from "midtrans-client";
 
 let snap = new Midtrans.Snap({
   isProduction: true,
-  serverKey: "Mid-server-ZQHhVbZGFDLam9We-86Lq1kO",
-  clientKey: "Mid-client-jzQhEO9WobzC-vrV",
+  serverKey: process.env.NEXT_PUBLIC_SECRET,
+  clientKey: process.env.NEXT_PUBLIC_CLIENT,
 });
 
 export async function POST(req) {
