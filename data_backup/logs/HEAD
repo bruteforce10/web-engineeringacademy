@@ -1,0 +1,14 @@
+0000000000000000000000000000000000000000 d86e0a287270a29f98888c2578e09f8575d4a7a7 bruteforce10 <audifirdi@gmail.com> 1723868898 +0700	commit (initial): Initial commit from Create Next App
+d86e0a287270a29f98888c2578e09f8575d4a7a7 0890c7585175c1b07e68ed0992822cf8effe517d bruteforce10 <audifirdi@gmail.com> 1724201762 +0700	commit: initial-commit
+0890c7585175c1b07e68ed0992822cf8effe517d 26a6bfdcb25df1ba3eec86b64be75e7f912ad272 bruteforce10 <audifirdi@gmail.com> 1725271827 +0700	commit: add section testimoni
+26a6bfdcb25df1ba3eec86b64be75e7f912ad272 e1600a7461ebe6c56446e16df88dec25503ab501 bruteforce10 <audifirdi@gmail.com> 1725547101 +0700	pull --tags origin master: Fast-forward
+e1600a7461ebe6c56446e16df88dec25503ab501 7a5e1898ee943ee52c321f27771344e1f5fcd52b bruteforce10 <audifirdi@gmail.com> 1725586111 +0700	commit: edit order
+7a5e1898ee943ee52c321f27771344e1f5fcd52b b5f7aacb3d51acdd7845ec7742b23a6a027bd2d7 bruteforce10 <audifirdi@gmail.com> 1725635911 +0700	pull --tags origin master: Fast-forward
+b5f7aacb3d51acdd7845ec7742b23a6a027bd2d7 8cfdac364862abcb5878cde511714bf5c6d2fd46 bruteforce10 <audifirdi@gmail.com> 1726533717 +0700	commit: add page order
+8cfdac364862abcb5878cde511714bf5c6d2fd46 4bd52904fa76ecdb4b9ff6feb417e72bfad6deff bruteforce10 <audifirdi@gmail.com> 1726533972 +0700	commit: order
+4bd52904fa76ecdb4b9ff6feb417e72bfad6deff 3ebb4316512c046ee2102e74de64e97344d8325e bruteforce10 <audifirdi@gmail.com> 1726534094 +0700	commit: edit
+3ebb4316512c046ee2102e74de64e97344d8325e 4bd52904fa76ecdb4b9ff6feb417e72bfad6deff bruteforce10 <audifirdi@gmail.com> 1726534148 +0700	reset: moving to HEAD~1
+4bd52904fa76ecdb4b9ff6feb417e72bfad6deff 8cfdac364862abcb5878cde511714bf5c6d2fd46 bruteforce10 <audifirdi@gmail.com> 1726534156 +0700	reset: moving to HEAD~1
+8cfdac364862abcb5878cde511714bf5c6d2fd46 b5f7aacb3d51acdd7845ec7742b23a6a027bd2d7 bruteforce10 <audifirdi@gmail.com> 1726534158 +0700	reset: moving to HEAD~1
+b5f7aacb3d51acdd7845ec7742b23a6a027bd2d7 3ebb4316512c046ee2102e74de64e97344d8325e bruteforce10 <audifirdi@gmail.com> 1726534303 +0700	reset: moving to 3ebb431
+3ebb4316512c046ee2102e74de64e97344d8325e 52e77aa92268ee11191c3b11bf530c166b9cd1bb Firdi Audi Putra <39665978+bruteforce10@users.noreply.github.com> 1726741153 +0700	commit: initial-commit
