@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import useSWR from "swr";
 
 const AppContext = createContext();
@@ -12,6 +12,7 @@ const AppContextProvider = (props) => {
     revalidateOnFocus: true,
     revalidateOnReconnect: true,
   });
+
   const [promoName, setPromoName] = useState("");
   const [disabled, setDisabled] = useState(false);
   const [orderType, setOrderType] = React.useState("Google Drive");

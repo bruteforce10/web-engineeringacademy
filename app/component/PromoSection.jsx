@@ -24,7 +24,7 @@ const PromoSection = ({ sisa, discount, date }) => {
         {sisa > 0 && promoName !== discount && (
           <button
             className=" font-semibold text-lg uppercase max-md:bg-yellow-500/50 max-md:mb-2 max-md:rounded-sm"
-            onClick={() => {
+            onClick={async () => {
               setPromoName(discount);
             }}
           >

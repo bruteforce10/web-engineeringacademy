@@ -26,8 +26,8 @@ const formSchema = z.object({
 });
 
 const FormData = ({ orderType, onSubmitRef, totalPrice }) => {
-  const router = useRouter();
   const { setDisabled } = MyContext();
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,7 +44,6 @@ const FormData = ({ orderType, onSubmitRef, totalPrice }) => {
   async function onSubmit(values) {
     setDisabled(true);
 
-    // Fetch user data based on email
     const getUser = await fetch(`/api/search-account?email=${values.email}`, {
       method: "GET",
       headers: {
@@ -99,10 +98,8 @@ const FormData = ({ orderType, onSubmitRef, totalPrice }) => {
       const couponData = await couponResponse.json();
 
       if (couponData) {
-        // Proceed with payment process
         const paymentData = await handlePayment(values, totalPrice, orderType);
         if (paymentData) {
-          // Update coupon with payment link
           const updateLinkData = await updateCouponLink(
             values,
             totalPrice,
@@ -111,7 +108,7 @@ const FormData = ({ orderType, onSubmitRef, totalPrice }) => {
           );
           if (updateLinkData) {
             setDisabled(false);
-            router.replace(paymentData?.redirect);
+            // router.replace(paymentData?.redirect);
           }
         }
       }
@@ -132,7 +129,7 @@ const FormData = ({ orderType, onSubmitRef, totalPrice }) => {
         );
         if (updateLinkData) {
           setDisabled(false);
-          router.replace(paymentData?.redirect);
+          // router.replace(paymentData?.redirect);
         }
       }
     }
