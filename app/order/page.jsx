@@ -92,6 +92,7 @@ export default function Order() {
                 orderType={orderType}
                 onSubmitRef={formSubmitRef}
                 totalPrice={totalPrice}
+                voucher={voucher}
               />
               <Button
                 className="w-full"

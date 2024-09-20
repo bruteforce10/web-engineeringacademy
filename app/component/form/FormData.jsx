@@ -23,10 +23,12 @@ const formSchema = z.object({
   "nomor-telpon": z.string().min(8, { message: "Nomor telpon harus diisi." }),
   alamat: z.string().min(8, { message: "Alamat harus diisi." }),
   "kode-pos": z.string().min(5, { message: "Kode pos harus diisi." }),
+  coupon: z.string(),
 });
 
-const FormData = ({ orderType, onSubmitRef, totalPrice }) => {
+const FormData = ({ orderType, onSubmitRef, totalPrice, voucher }) => {
   const { setDisabled } = MyContext();
+  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -38,11 +40,25 @@ const FormData = ({ orderType, onSubmitRef, totalPrice }) => {
       "nomor-telpon": "62",
       alamat: "",
       "kode-pos": "",
+      coupon: "",
     },
   });
 
   async function onSubmit(values) {
     setDisabled(true);
+
+    if (voucher) {
+      await fetch("/api/update-coupon", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          promoCode: voucher?.promoCode,
+          qty: voucher?.qty - 1,
+        }),
+      });
+    }
 
     const getUser = await fetch(`/api/search-account?email=${values.email}`, {
       method: "GET",
@@ -108,7 +124,7 @@ const FormData = ({ orderType, onSubmitRef, totalPrice }) => {
           );
           if (updateLinkData) {
             setDisabled(false);
-            // router.replace(paymentData?.redirect);
+            router.replace(paymentData?.redirect);
           }
         }
       }
@@ -129,7 +145,7 @@ const FormData = ({ orderType, onSubmitRef, totalPrice }) => {
         );
         if (updateLinkData) {
           setDisabled(false);
-          // router.replace(paymentData?.redirect);
+          router.replace(paymentData?.redirect);
         }
       }
     }
@@ -148,9 +164,10 @@ const FormData = ({ orderType, onSubmitRef, totalPrice }) => {
       form.setValue("alamat", "");
       form.setValue("kode-pos", "");
       form.setValue("provinsi", "");
+      form.setValue("coupon", voucher);
     }
     onSubmitRef.current = form.handleSubmit(onSubmit);
-  }, [form, onSubmitRef, orderType]);
+  }, [form, onSubmitRef, orderType, voucher]);
 
   return (
     <Form {...form}>

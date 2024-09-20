@@ -1,14 +1,7 @@
 import request, { gql } from "graphql-request";
 
-export async function PUT(req) {
+export async function POST(req) {
   const body = await req.json();
-
-  console.log(body);
-
-  return Response.json({
-    data: body,
-    status: 200,
-  });
 
   const mutationQuery =
     gql`
@@ -17,15 +10,15 @@ export async function PUT(req) {
         where: { promoCode: "` +
     body?.promoCode +
     `" }
-        data: { limitCoupon: "` +
-    body?.coupon +
-    `" }
+        data: { qty: ` +
+    `${parseInt(body?.qty)}` +
+    `}
       ) {
-        nameDiscount
+        id
       }
-        publishCouponDiscount(where: {where: { promoCode: "` +
+      publishCouponDiscount(where: { promoCode: "` +
     body?.promoCode +
-    `"}) {
+    `" }) {
         id
       }
     }
