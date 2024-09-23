@@ -99,8 +99,21 @@ export default function Order() {
                 disabled={disabled}
                 onClick={handleCheckout}
               >
-                <LuShoppingCart className="mr-2" />
-                Checkout
+                {!disabled ? (
+                  <>
+                    <LuShoppingCart className="mr-2" />
+                    Checkout
+                  </>
+                ) : (
+                  <>
+                    <div className="flex flex-row gap-1 mr-2">
+                      <div className="w-[6px] h-[6px] rounded-full bg-white animate-bounce [animation-delay:.7s]"></div>
+                      <div className="w-[6px] h-[6px] rounded-full bg-white animate-bounce [animation-delay:.3s]"></div>
+                      <div className="w-[6px] h-[6px] rounded-full bg-white animate-bounce [animation-delay:.7s]"></div>
+                    </div>
+                    Loading
+                  </>
+                )}
               </Button>
               <p className="font-semibold">
                 Note : Silahkan cek email kamu untuk konfirmasi dan Jika
