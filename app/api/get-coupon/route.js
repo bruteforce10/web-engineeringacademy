@@ -118,6 +118,7 @@ export async function POST(req) {
 
 export async function PUT(req) {
   const body = await req.json();
+  console.log(body);
 
   const mutationQuery =
     gql`
@@ -138,9 +139,9 @@ export async function PUT(req) {
           provinsi: "` +
     body?.provinsi +
     `",
-       callback: "` +
-    body?.callback +
-    `",
+       callback:  ` +
+    `${Boolean(body?.callback)}` +
+    `,
        link: "` +
     body?.link +
     `",

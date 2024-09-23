@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
           <Footer />
-          <div className="fixed bottom-0 z-[99] w-full">
+          <div className="fixed bottom-0 z-[1] right-0">
             <CallToAction />
           </div>
         </body>

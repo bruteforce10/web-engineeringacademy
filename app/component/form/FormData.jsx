@@ -95,6 +95,7 @@ const FormData = ({ orderType, onSubmitRef, totalPrice, voucher }) => {
         body: JSON.stringify({
           ...values,
           totalPrice,
+          callback: false,
           orderType,
           link: redirectLink,
         }),
@@ -116,6 +117,7 @@ const FormData = ({ orderType, onSubmitRef, totalPrice, voucher }) => {
       if (couponData) {
         const paymentData = await handlePayment(values, totalPrice, orderType);
         if (paymentData) {
+          console.log(paymentData);
           const updateLinkData = await updateCouponLink(
             values,
             totalPrice,
@@ -123,6 +125,7 @@ const FormData = ({ orderType, onSubmitRef, totalPrice, voucher }) => {
             paymentData?.redirect
           );
           if (updateLinkData) {
+            console.log(updateLinkData);
             setDisabled(false);
             router.replace(paymentData?.redirect);
           }
@@ -130,12 +133,11 @@ const FormData = ({ orderType, onSubmitRef, totalPrice, voucher }) => {
       }
     };
 
-    // Check if user is a new customer
     if (isCustomerNew) {
       await handleNewCustomerFlow();
     } else {
-      // Existing customer, proceed with payment directly
       const paymentData = await handlePayment(values, totalPrice, orderType);
+      console.log(paymentData);
       if (paymentData) {
         const updateLinkData = await updateCouponLink(
           values,
@@ -144,6 +146,7 @@ const FormData = ({ orderType, onSubmitRef, totalPrice, voucher }) => {
           paymentData?.redirect
         );
         if (updateLinkData) {
+          console.log(updateLinkData);
           setDisabled(false);
           router.replace(paymentData?.redirect);
         }
