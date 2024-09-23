@@ -44,10 +44,27 @@ const BuySection = () => {
             </h4>
           </div>
           <div className="w-[200px]">
-            <h4 className="font-semibold text-xl">PROMO EKSKLUSIF</h4>
-            <p className="font-bold  text-2xl">
-              {formatRupiah(dataProduct.priceDiscount)}
-            </p>
+            {voucher ? (
+              <>
+                <h4 className="font-semibold text-xl">
+                  Promo{" "}
+                  <span className="font-bold">{voucher?.nameDiscount}</span>
+                </h4>
+                <p className="font-bold  text-2xl">
+                  {formatRupiah(
+                    dataProduct.price -
+                      dataProduct.price * voucher?.percentDiscount
+                  )}
+                </p>
+              </>
+            ) : (
+              <>
+                <h4 className="font-semibold text-xl">PROMO EKSKLUSIF</h4>
+                <p className="font-bold  text-2xl">
+                  {formatRupiah(dataProduct.priceDiscount)}
+                </p>
+              </>
+            )}
           </div>
         </div>
         <ul className="px-4">
