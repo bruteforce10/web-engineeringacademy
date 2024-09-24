@@ -26,7 +26,8 @@ const Navbar = () => {
       </Link>
       <Link
         className="underline font-medium tracking-tight text-lg max-sm:hidden"
-        href="/"
+        href="https://sipilku.vercel.app"
+        target="_blank"
       >
         Aplikasi Perhitungan Sipil <span className="font-bold">Free 👇</span>
       </Link>
@@ -36,13 +37,15 @@ const Navbar = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger>MENU</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <NavigationMenuLink>
-                {" "}
-                Aplikasi Perhitungan Sipil{" "}
-                <span className="font-bold">
-                  Free <span className="max-sm:hidden">👇</span>
-                </span>
-              </NavigationMenuLink>
+              <Link href="https://sipilku.vercel.app" target="_blank">
+                <NavigationMenuLink>
+                  {" "}
+                  Aplikasi Perhitungan Sipil{" "}
+                  <span className="font-bold">
+                    Free <span className="max-sm:hidden">👇</span>
+                  </span>
+                </NavigationMenuLink>
+              </Link>
             </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>

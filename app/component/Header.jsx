@@ -4,28 +4,32 @@ import Image from "next/image";
 import Typewriter from "typewriter-effect";
 
 const Header = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1250) {
-        setIsMobile(true);
-      } else {
         setIsMobile(false);
+      } else {
+        setIsMobile(true);
       }
     };
 
+    handleResize();
     window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
     <header
       className="h-screen max-sm:h-[470px] w-full flex-col pt-16 items-center flex max-sm:px-4"
       style={{
-        backgroundImage: isMobile
+        backgroundImage: !isMobile
           ? "url('/bg-header-mobile.png')"
           : "url('/bg-header.webp')",
-        backgroundSize: isMobile ? "125% " : "100%",
+        backgroundSize: !isMobile ? "125% " : "100%",
         backgroundPositionX: "center",
         backgroundRepeat: "no-repeat",
         objectFit: "contain",

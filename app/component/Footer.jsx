@@ -16,7 +16,7 @@ const Footer = () => {
           </Link>
           <Link href={"#"} className="flex gap-2 items-center hover:underline">
             <IoLogoWhatsapp className="text-xl" />
-            <div>+62 822 0000 000</div>
+            <div>+62 8521 4068 536</div>
           </Link>
         </div>
         <Image
