@@ -38,6 +38,8 @@ export default function ReplyPage() {
         }
       );
       setData(dataFilterAfterTwoDays);
+
+      console.log(dataFilterAfterTwoDays);
     };
 
     fetchData();
@@ -80,13 +82,12 @@ export default function ReplyPage() {
                     className="bg-green-600"
                     onClick={async () => {
                       const updateLinkResponse = await fetch("/api/account", {
-                        method: "PUT",
+                        method: "POST",
                         headers: {
                           "Content-Type": "application/json",
                         },
                         body: JSON.stringify({
                           email: invoice?.email,
-                          callback: true,
                         }),
                       });
                       const update = await updateLinkResponse.json();
