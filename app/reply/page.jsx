@@ -25,21 +25,11 @@ export default function ReplyPage() {
         cache: "no-store",
       });
       const result = await response.json();
-      const dataFilterAfterTwoDays = result?.data?.dataCostumers.filter(
-        (item) => {
-          const createdAt = new Date(item?.publishedAt);
-          const currentDate = new Date();
-          const tomorrow = new Date(currentDate);
-          tomorrow.setDate(currentDate.getDate() + 2);
-
-          if (createdAt < tomorrow) {
-            return item;
-          }
-        }
+      const sortedData = result?.data?.dataCostumers.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
-      setData(dataFilterAfterTwoDays);
 
-      console.log(dataFilterAfterTwoDays);
+      setData(sortedData);
     };
 
     fetchData();

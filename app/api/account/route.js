@@ -4,6 +4,7 @@ export async function GET() {
   const query = gql`
     query {
       dataCostumers {
+        createdAt
         publishedAt
         email
         orderType
