@@ -4,8 +4,9 @@ import Navbar from "./component/Navbar";
 import { AppContextProvider } from "@/utils/context/AppContext";
 import Footer from "./component/Footer";
 import CallToAction from "./component/CallToAction";
-import PixelFacebook from "./component/PixelFacebook";
 import dynamic from "next/dynamic";
+import Script from "next/script";
+import * as fbq from "@/lib/fpixel";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,6 +28,25 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <NoSSRPixelFacebook>
+        <head>
+          <Script
+            id="facebook-pixel"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1566161417361183');
+          `,
+            }}
+          />
+        </head>
         <AppContextProvider>
           <body className={inter.variable + "bg-[#F6F8FD] "}>
             <Navbar />
