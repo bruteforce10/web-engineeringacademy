@@ -4,6 +4,7 @@ export async function GET() {
   const query = gql`
     query {
       dataCostumers {
+        createdAt
         publishedAt
         email
         orderType
@@ -22,9 +23,8 @@ export async function GET() {
   }
 }
 
-export async function PUT(req) {
+export async function POST(req) {
   const body = await req.json();
-  console.log(body);
 
   const query =
     gql`
@@ -48,6 +48,7 @@ export async function PUT(req) {
   `;
   try {
     const result = await request(process.env.HYGRAPH_SERVER, query);
+    console.log(result);
     return Response.json({ data: result, status: 200 });
   } catch (error) {
     console.log(error);

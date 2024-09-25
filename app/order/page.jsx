@@ -27,6 +27,7 @@ const dataOrder = {
 };
 
 export default function Order() {
+  const noWhatsapp = "85214068536";
   const [uniqe] = useState(Math.floor(Math.random() * 1000));
   const { orderType, setOrderType, dataVoucher, promoName, disabled } =
     MyContext();
@@ -118,7 +119,11 @@ export default function Order() {
               <p className="font-semibold">
                 Note : Silahkan cek email kamu untuk konfirmasi dan Jika
                 mengalami kendala saat checkout bisa di informasikan ke admin
-                <Link href={"#"} className="underline ml-1">
+                <Link
+                  href={`https://api.whatsapp.com/send?phone=%2062${noWhatsapp}&text=Hai,%20saya%20ingin%20bantuan%20mengenai%20produk%20database%20ini?`}
+                  className="underline ml-1"
+                  target="_blank"
+                >
                   disini
                 </Link>
               </p>

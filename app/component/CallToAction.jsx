@@ -3,14 +3,14 @@ import React from "react";
 import { FaWhatsapp } from "react-icons/fa6";
 
 const CallToAction = () => {
-  const noWhatsapp = "1234567890";
+  const noWhatsapp = "85214068536";
 
   return (
     <React.Fragment>
       <div
         onClick={() =>
           window.open(
-            `https://api.whatsapp.com/send?phone=%2062${noWhatsapp}&text=Hai,%20saya%20dapat%20info%20dari%20website%20PARKSPRING%20Gading`
+            `https://api.whatsapp.com/send?phone=%2062${noWhatsapp}&text=Hai,%20saya%20ingin%20bantuan%20mengenai%20produk%20database%20ini?`
           )
         }
         className="bg-[#289b52]  p-3 rounded-full w-fit max-sm:mr-10 mr-16 mb-12 max-sm:mb-10 ml-auto relative cursor-pointer"
