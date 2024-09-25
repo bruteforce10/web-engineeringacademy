@@ -4,6 +4,9 @@ import Navbar from "./component/Navbar";
 import { AppContextProvider } from "@/utils/context/AppContext";
 import Footer from "./component/Footer";
 import CallToAction from "./component/CallToAction";
+import Script from "next/script";
+import * as fbq from "../lib/fpixel";
+import PixelFacebook from "./component/PixelFacebook";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,17 +22,38 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <AppContextProvider>
-        <body className={inter.variable + "bg-[#F6F8FD] "}>
-          <Navbar />
-          {children}
-          <Footer />
-          <div className="fixed bottom-0 z-[1] right-0">
-            <CallToAction />
-          </div>
-        </body>
-      </AppContextProvider>
-    </html>
+    <PixelFacebook>
+      <html lang="en">
+        <head>
+          <Script
+            id="fb-pixel"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', ${fbq.FB_PIXEL_ID});
+            `,
+            }}
+          />
+        </head>
+        <AppContextProvider>
+          <body className={inter.variable + "bg-[#F6F8FD] "}>
+            <Navbar />
+            {children}
+            <Footer />
+            <div className="fixed bottom-0 z-[1] right-0">
+              <CallToAction />
+            </div>
+          </body>
+        </AppContextProvider>
+      </html>
+    </PixelFacebook>
   );
 }
