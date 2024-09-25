@@ -10,6 +10,7 @@ import { provinces } from "@/lib/dataArea";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { MyContext } from "@/utils/context/AppContext";
+import * as fbq from "@/lib/fpixel";
 
 const formSchema = z.object({
   "nama-lengkap": z.string().min(2, {
@@ -46,6 +47,7 @@ const FormData = ({ orderType, onSubmitRef, totalPrice, voucher }) => {
 
   async function onSubmit(values) {
     setDisabled(true);
+    fbq.event("Purchase", { currency: "IDR", value: totalPrice });
 
     if (voucher) {
       await fetch("/api/update-coupon", {
